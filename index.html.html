@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #ff4d4d;
+            padding: 20px;
+            color: white;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 20px;
+        }
+        .buttons {
+            margin: 40px;
+        }
+        .button {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #ff3333;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        .image-upload {
+            margin-top: 20px;
+        }
+        .image-upload label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .uploaded-image {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Will You Be My Valentine? ❤️</h1>
+    </header>
+    <main>
+        <p>Hi love, I couldn’t think of a better way to ask you...</p>
+        <p>So here it is: Will you be my Valentine?</p>
+        <div class="buttons">
+            <button class="button" onclick="handleResponse('yes')">YES!</button>
+            <button class="button" onclick="handleResponse('of_course')">OF COURSE!</button>
+            <button class="button" onclick="handleResponse('no')">NO 😢</button>
+        </div>
+        <div id="response-area"></div>
+        <div class="image-upload">
+            <label for="imageInput">Upload a special memory or fun photo:</label>
+            <input type="file" id="imageInput" accept="image/*" onchange="displayImage(event)">
+            <img id="uploadedImage" class="uploaded-image" src="" alt="Your uploaded image will appear here">
+        </div>
+    </main>
+    <footer>
+        <p>Made with 💖 by someone who loves you!</p>
+    </footer>
+    <script>
+        function handleResponse(response) {
+            const responseArea = document.getElementById('response-area');
+            if (response === 'yes') {
+                responseArea.innerHTML = '<p>Yay! You said YES! ❤️ I'm so excited!</p>';
+            } else if (response === 'of_course') {
+                responseArea.innerHTML = '<p>You said OF COURSE! 🥰 You're the best!</p>';
+            } else if (response === 'no') {
+                responseArea.innerHTML = '<p>Oh no! 😢 Just kidding, you can't say no to me! Try again... 😉</p>';
+            }
+        }
+
+        function displayImage(event) {
+            const uploadedImage = document.getElementById('uploadedImage');
+            uploadedImage.src = URL.createObjectURL(event.target.files[0]);
+            uploadedImage.onload = () => URL.revokeObjectURL(uploadedImage.src);
+        }
+    </script>
+</body>
+</html>
